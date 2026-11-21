@@ -1,0 +1,177 @@
+:root {
+  --bg: #f4f6fb;
+  --card: #ffffff;
+  --ink: #232a3b;
+  --muted: #6b7388;
+  --line: #e3e7f0;
+  --blue: #3b6cf6;
+  --orange: #ff8a3d;
+  --green: #22b573;
+  --purple: #8b5cf6;
+  --red: #ef4565;
+  --yellow: #f5b82e;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+header {
+  background: linear-gradient(120deg, var(--blue), var(--purple), var(--red));
+  color: #fff;
+  padding: 30px 20px;
+  text-align: center;
+}
+header h1 { margin: 0 0 6px; font-size: 2rem; }
+header p { margin: 0; opacity: 0.9; }
+
+main {
+  max-width: 1000px;
+  margin: 24px auto;
+  padding: 0 16px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: start;
+}
+.column { display: grid; gap: 20px; }
+.wide { grid-column: 1 / -1; }
+
+.box {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 4px 14px rgba(40, 60, 120, 0.07);
+}
+h2 { margin: 0 0 14px; font-size: 1.2rem; }
+
+label { display: block; margin: 12px 0 5px; font-size: 0.9rem; color: var(--muted); }
+
+input, select {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 1rem;
+  font-family: inherit;
+  border: 2px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+  color: var(--ink);
+}
+input:focus, select:focus { outline: none; border-color: var(--blue); }
+
+button {
+  margin-top: 14px;
+  padding: 10px 18px;
+  font-size: 1rem;
+  font-family: inherit;
+  background: var(--blue);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.1s, background 0.2s;
+}
+button:hover { background: #2a58d8; transform: translateY(-2px); }
+button:active { transform: translateY(0); }
+button:focus-visible { outline: 3px solid #b6c8fb; outline-offset: 2px; }
+
+button.danger { background: transparent; color: var(--red); border: 2px solid var(--red); }
+button.danger:hover { background: var(--red); color: #fff; }
+
+.hidden { display: none; }
+.small { font-size: 0.9rem; color: var(--muted); margin: 8px 0 0; }
+
+/* Budget row */
+.budget-row { display: flex; gap: 10px; }
+.budget-row button { margin-top: 0; white-space: nowrap; }
+
+/* Colorful stat cards */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin: 18px 0;
+}
+.stat { color: #fff; border-radius: 12px; padding: 14px; }
+.stat .label { display: block; font-size: 0.8rem; margin: 0 0 4px; color: rgba(255,255,255,0.9); }
+.stat .value { font-size: 1.5rem; font-weight: bold; }
+.s-blue { background: var(--blue); }
+.s-orange { background: var(--orange); }
+.s-green { background: var(--green); }
+.s-purple { background: var(--purple); }
+
+/* Progress bar */
+.bar { height: 16px; background: #e8ecf5; border-radius: 8px; overflow: hidden; }
+.bar-fill { height: 100%; width: 0%; background: var(--green); transition: width 0.4s, background 0.4s; }
+#message { margin: 10px 0 0; font-weight: bold; }
+#error { color: var(--red); margin: 10px 0 0; min-height: 1.2em; }
+
+.ok { color: var(--green); }
+.warn { color: #c98a1b; }
+.over { color: var(--red); }
+
+/* Category chips */
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+.chip {
+  margin: 0;
+  padding: 7px 12px;
+  font-size: 0.9rem;
+  background: #fff;
+  color: var(--ink);
+  border: 2px solid var(--line);
+  border-radius: 20px;
+}
+.chip:hover { background: #f1f4fb; }
+.chip.selected { color: #fff; }
+
+/* Balances */
+.balances { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.bal { border-radius: 12px; padding: 14px; }
+.bal .label { display: block; margin: 0 0 4px; }
+.bal .value { font-size: 1.5rem; font-weight: bold; }
+.good { background: #e3f7ee; color: #12744a; }
+.bad { background: #fde6eb; color: #b3203f; }
+
+/* Category bars */
+.cat-row { margin-bottom: 12px; }
+.cat-top { display: flex; justify-content: space-between; font-size: 0.95rem; }
+.cat-bar { height: 10px; background: #e8ecf5; border-radius: 5px; overflow: hidden; margin-top: 4px; }
+.cat-fill { height: 100%; width: 0%; border-radius: 5px; transition: width 0.4s; }
+
+/* Expense list */
+ul { list-style: none; margin: 0; padding: 0; }
+li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  margin-bottom: 8px;
+  border-radius: 10px;
+  border-left: 6px solid var(--line);
+  background: #f8f9fd;
+}
+li.settled { opacity: 0.55; }
+.item-info small { display: block; color: var(--muted); }
+.item-right { text-align: right; white-space: nowrap; }
+.item-amount { font-weight: bold; }
+.mini-btn { margin: 4px 0 0 6px; padding: 4px 10px; font-size: 0.8rem; }
+.delete-btn { background: transparent; color: var(--red); border: 2px solid var(--line); }
+.delete-btn:hover { background: var(--red); color: #fff; }
+.settle-btn { background: var(--green); }
+.settle-btn:hover { background: #179a60; }
+.empty { color: var(--muted); font-style: italic; border-left: none; }
+
+/* Phones */
+@media (max-width: 760px) {
+  main { grid-template-columns: 1fr; }
+  .stats { grid-template-columns: 1fr 1fr; }
+  .budget-row { flex-direction: column; }
+}
