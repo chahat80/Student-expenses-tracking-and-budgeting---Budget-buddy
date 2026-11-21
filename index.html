@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hostel Budget Manager</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>💸 Hostel Budget Manager</h1>
+    <p>Track spending, split bills with roommates and friends, and stay inside your budget.</p>
+  </header>
+
+  <main>
+
+    <!-- Budget and summary -->
+    <section class="box wide">
+      <h2>This month</h2>
+
+      <div class="budget-row">
+        <input type="number" id="budgetInput" placeholder="Monthly budget in ₹, e.g. 8000" min="0">
+        <button id="saveBudgetBtn">Save budget</button>
+      </div>
+
+      <div class="stats">
+        <div class="stat s-blue"><span class="label">Budget</span><span class="value" id="budgetText">₹0</span></div>
+        <div class="stat s-orange"><span class="label">Spent (your share)</span><span class="value" id="spentText">₹0</span></div>
+        <div class="stat s-green"><span class="label">Left</span><span class="value" id="leftText">₹0</span></div>
+        <div class="stat s-purple"><span class="label">You can spend per day</span><span class="value" id="dailyLimitText">₹0</span></div>
+      </div>
+
+      <div class="bar"><div class="bar-fill" id="barFill"></div></div>
+      <p id="message">Save a budget to get started.</p>
+      <p id="dailyAvgText" class="small"></p>
+    </section>
+
+    <!-- Add expense -->
+    <section class="box">
+      <h2>Add an expense</h2>
+
+      <label for="titleInput">What was it for?</label>
+      <input type="text" id="titleInput" placeholder="e.g. Pizza night, DSA book">
+
+      <label for="amountInput">Total amount paid (₹)</label>
+      <input type="number" id="amountInput" placeholder="e.g. 600" min="0">
+
+      <label>Category (tap one)</label>
+      <div class="chips" id="categoryChips"></div>
+
+      <label for="dateInput">Date</label>
+      <input type="date" id="dateInput">
+
+      <label for="splitInput">Split with</label>
+      <select id="splitInput">
+        <option value="Just me">Just me</option>
+        <option value="Roommates">Roommates</option>
+        <option value="Friends">Friends</option>
+      </select>
+
+      <div id="splitDetails" class="hidden">
+        <label for="peopleInput">Number of people (including you)</label>
+        <input type="number" id="peopleInput" value="2" min="2">
+
+        <label for="paidByInput">Who paid?</label>
+        <select id="paidByInput">
+          <option value="me">I paid</option>
+          <option value="other">Someone else paid</option>
+        </select>
+
+        <p id="sharePreview" class="small"></p>
+      </div>
+
+      <button id="addBtn">Add expense</button>
+      <p id="error"></p>
+    </section>
+
+    <div class="column">
+      <!-- Balances -->
+      <section class="box">
+        <h2>Who owes whom</h2>
+        <div class="balances">
+          <div class="bal good"><span class="label">Others owe you</span><span class="value" id="owedToMe">₹0</span></div>
+          <div class="bal bad"><span class="label">You owe others</span><span class="value" id="iOwe">₹0</span></div>
+        </div>
+        <p class="small">Tap "Settle" on a shared expense once the money is returned.</p>
+      </section>
+
+      <!-- Category totals -->
+      <section class="box">
+        <h2>Spending by category</h2>
+        <div id="categoryList"></div>
+      </section>
+    </div>
+
+    <!-- Expense list -->
+    <section class="box wide">
+      <h2>All expenses</h2>
+      <div class="chips" id="filterChips"></div>
+      <ul id="expenseList"></ul>
+      <button id="clearBtn" class="danger">Clear all expenses</button>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
